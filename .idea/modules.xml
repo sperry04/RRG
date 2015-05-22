@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FileImporter/FileImporter.iml" filepath="$PROJECT_DIR$/FileImporter/FileImporter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResultsGenerator/ResultsGenerator.iml" filepath="$PROJECT_DIR$/ResultsGenerator/ResultsGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeasonManager/SeasonManager.iml" filepath="$PROJECT_DIR$/SeasonManager/SeasonManager.iml" />
+    </modules>
+  </component>
+</project>
