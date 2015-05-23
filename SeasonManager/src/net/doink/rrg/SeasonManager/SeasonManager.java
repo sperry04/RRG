@@ -26,6 +26,7 @@ public class SeasonManager {
      * @return a SeasonManager object backed by the specified file, or null if the file could not be created
      */
     public static SeasonManager createNewSeason(String name, String description, String filename) {
+        LOGGER.info("Creating new season named [{}] - [{}] in file [{}]...", name, description, filename);
         SeasonManager rval = new SeasonManager(name, description);
         return rval.writeToDisk(filename) ? rval : null;
     }
@@ -43,13 +44,13 @@ public class SeasonManager {
      * Gets the JSON representation of the Season
      * @return JSON String containing the Season's current state
      */
-    public String getJson() {
-        JSONObject json = new JSONObject();
+    public JSONObject getJson() {
+        JSONObject rval = new JSONObject();
 
         // append the season's headerData into the json object
-        json.put(HEADER, headerData);
+        rval.put(HEADER, headerData);
 
-        return json.toString();
+        return rval;
     }
 
     /**
@@ -60,7 +61,7 @@ public class SeasonManager {
     public boolean writeToDisk(String filename) {
         try {
             FileWriter writer = new FileWriter(filename);
-            writer.write(getJson());
+            writer.write(getJson().toString());
             return true;
         } catch (IOException e) {
             LOGGER.error("Failed to create season file", e);

@@ -1,6 +1,7 @@
 package net.doink.rrg.SeasonManager;
 
 import junit.framework.Assert;
+import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 /**
@@ -26,7 +27,7 @@ public class SeasonManagerTest {
         SeasonManager seasonManager = new SeasonManager("Test", "toString Test");
         Assert.assertNotNull(seasonManager);
 
-        String json = seasonManager.getJson();
+        JSONObject json = seasonManager.getJson();
         Assert.assertNotNull(json);
         // TODO: compare json to expected output
     }
