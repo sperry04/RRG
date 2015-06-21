@@ -11,9 +11,9 @@ import java.io.IOException;
  * Manages the headerData for a season of results
  * Created by sperry on 5/22/15.
  */
-public class SeasonManager {
+public class Season {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SeasonManager.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Season.class);
 
     private static final String HEADER = "season";
     private static final String NAME = "name";
@@ -23,18 +23,18 @@ public class SeasonManager {
     /**
      * Creates a new empty season, writing the empty shell structure to the specified file
      * @param filename The name of the file to write the empty shell to
-     * @return a SeasonManager object backed by the specified file, or null if the file could not be created
+     * @return a Season object backed by the specified file, or null if the file could not be created
      */
-    public static SeasonManager createNewSeason(String name, String description, String filename) {
+    public static Season createNewSeason(String name, String description, String filename) {
         LOGGER.info("Creating new season named [{}] - [{}] in file [{}]...", name, description, filename);
-        SeasonManager rval = new SeasonManager(name, description);
+        Season rval = new Season(name, description);
         return rval.writeToDisk(filename) ? rval : null;
     }
 
     /**
-     * Constructs a new SeasonManager
+     * Constructs a new Season
      */
-    protected SeasonManager(String name, String description) {
+    protected Season(String name, String description) {
         headerData = new JSONObject();
         headerData.put(NAME, name);
         headerData.put(DESCRIPTION, description);

@@ -15,7 +15,7 @@ public class Drivers {
     private static final int FUZZY_THRESHOLD_AUTO = 2; // fuzzy matches below this Levenshtein Distance will be auto accepted as the same name
     private static final int FUZZY_THRESHOLD_WARN = 6; // fuzzy matches below this Levenshtein Distance will be logged as possible matches
     private static final Logger LOGGER = LoggerFactory.getLogger(Drivers.class);
-    private SortedMap<String, Driver> drivers = new TreeMap<>();
+    private final SortedMap<String, Driver> drivers = new TreeMap<>();
 
     public Drivers() {
 
@@ -76,12 +76,21 @@ public class Drivers {
         Different
     }
 
+    /**
+     * Encapsulates Driver data
+     */
     public class Driver {
         private String acronym;
         private String displayName;
+        private String carClass;
+        private String carNum;
+        private String carDescription;
+        private String hometown;
+        private String sponsor;
+
         private SortedSet<String> aliases = new TreeSet<>();
 
-        public Driver(String name, Set<String> existingAcronyms) {
+        public Driver(String name, String driverName, String driverClass, String driverNum, String driverCar, String driverHometown, String driverSponsor, Set<String> existingAcronyms) {
 
             // figure out the driver's unique acronym
             int offset = name.lastIndexOf(" ") + 1; // the start of the driver's last name
@@ -98,6 +107,12 @@ public class Drivers {
             }
 
             displayName = name;
+            this.driverName = driverName;
+            this.driverClass = driverClass;
+            this.driverNum = driverNum;
+            this.driverCar = driverCar;
+            this.driverHometown = driverHometown;
+            this.driverSponsor = driverSponsor;
             aliases.add(name.toUpperCase());
         }
 
